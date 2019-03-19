@@ -48,7 +48,7 @@ options['patience'] = 25
 
 # Number of samples used to test at once. This parameter should be around 50000 for machines
 # with less than 32GB of RAM
-options['batch_size'] = 5000
+options['batch_size'] = 500
 
 # net print verbosity. Set to zero for this particular notebook, but setting this value to 11 is recommended
 options['net_verbose'] = 11
@@ -105,3 +105,21 @@ options['weight_paths'] = '/scratch/mythri.v/MIA_project/'
 #Train the model
 model = cascade_model(options)
 model = train_cascaded_model(model, train_x_data, train_y_data,  options)
+
+#Test the model
+
+test_folder = '/home/mythri/Documents/MIA/dl_project/test_data/'
+
+filename2='CHB_train_Case09'
+
+filename4='UNC_train_Case09'
+test_x_data = {}
+test_x_data[filename2] = {'T1': os.path.join(test_folder,'CHB_train_Case09',filename2+ '_T1_brain.nii.gz'), 
+                           'FLAIR': os.path.join(test_folder,'CHB_train_Case09',filename2+'_FLAIR_brain.nii.gz')}
+test_x_data[filename4] = {'T1': os.path.join(test_folder,'UNC_train_Case09',filename4+ '_T1_brain.nii.gz'), 
+                        'FLAIR': os.path.join(test_folder,'UNC_train_Case09',filename4+ '_FLAIR_brain.nii.gz')}
+
+outseg = test_cascaded_model(model,test_x_data,  options)
+
+                        
+
