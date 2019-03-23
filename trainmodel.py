@@ -108,7 +108,7 @@ model = train_cascaded_model(model, train_x_data, train_y_data,  options)
 
 #Test the model
 
-test_folder = '/home/mythri/Documents/MIA/dl_project/test_data/'
+test_folder = '/scratch/mythri.v/MIA_project/test_data/'
 
 filename2='CHB_train_Case09'
 
